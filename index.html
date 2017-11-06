@@ -68,17 +68,23 @@
         }
       }
 
+      class ModRow extends React.Component {
+        render() {
+          return React.createElement(ReactBootstrap.Row, null,
+            this.props.modPanelRow.map((props, index, panels)=>{
+              return React.createElement(ReactBootstrap.Col, {xs: 12 / panels.length, className: 'text-center', key: `modCol${index}`},
+                React.createElement(ModPanel, props, null)
+              );
+            })
+          );
+        }
+      }
+
       class ModGrid extends React.Component {
         render() {
           return React.createElement(ReactBootstrap.Grid, null,
             this.props.mod2DArray.map((modPanelRow, index)=>{
-              return React.createElement(ReactBootstrap.Row, {key: `modRow${index}`},
-                modPanelRow.map((props, index, panels)=>{
-                  return React.createElement(ReactBootstrap.Col, {xs: 12 / panels.length, className: 'text-center', key: `modCol${index}`},
-                    React.createElement(ModPanel, props, null)
-                  );
-                })
-              );
+              return React.createElement(ModRow, {modPanelRow: modPanelRow, key: `modRow${index}`}, null);
             })
           );
         }
