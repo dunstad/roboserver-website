@@ -47,8 +47,8 @@
 
       class ModPanel extends React.Component {
         render() {
-          return React.createElement(ReactBootstrap.Panel, {header: 'test', bsStyle: 'primary', className: 'modPanel'},
-            React.createElement(ReactBootstrap.Image, {src: 'http://via.placeholder.com/300x300', responsive: true}, null)
+          return React.createElement(ReactBootstrap.Panel, {header: `${this.props.header}`, bsStyle: 'primary', className: 'modPanel'},
+            React.createElement(ReactBootstrap.Image, {src: `${this.props.src}`, responsive: true}, null)
           );
         }
       }
@@ -57,7 +57,7 @@
 
       let grid = React.createElement(ReactBootstrap.Grid, null, 
         React.createElement(ReactBootstrap.Row, null,
-          React.createElement(ModPanel, null, null)
+          React.createElement(ModPanel, {header: 'test', src: 'http://via.placeholder.com/200x200'}, null)
         )
       );
 
