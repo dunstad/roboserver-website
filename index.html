@@ -28,18 +28,40 @@
           padding: 150px 0;
         }
 
+        .modPanel {
+          display: inline-block;
+        }
+
       </style>
 
   </head>
 
   <body>
 
+    <div id="reactContainer"></div>
+
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.31.5/react-bootstrap.js"></script>
     <script>
+
+      class ModPanel extends React.Component {
+        render() {
+          return React.createElement(ReactBootstrap.Panel, {header: 'test', bsStyle: 'primary', className: 'modPanel'},
+            React.createElement(ReactBootstrap.Image, {src: 'http://via.placeholder.com/300x300', responsive: true}, null)
+          );
+        }
+      }
       
-      
+      let reactContainer = document.getElementById('reactContainer');
+
+      let grid = React.createElement(ReactBootstrap.Grid, null, 
+        React.createElement(ReactBootstrap.Row, null,
+          React.createElement(ModPanel, null, null)
+        )
+      );
+
+      ReactDOM.render(grid, reactContainer, null);
 
     </script>
 
