@@ -47,22 +47,22 @@
 
       let modPanels = [
         [
-          {header: 'test1', src: 'http://via.placeholder.com/200x200'},
-          {header: 'test2', src: 'http://via.placeholder.com/200x200'},
-          {header: 'test3', src: 'http://via.placeholder.com/200x200'},
-          {header: 'test4', src: 'http://via.placeholder.com/200x200'},
+          {header: 'test1', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test2', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test3', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test4', src: 'http://via.placeholder.com/200x200', href: '#'},
         ],
         [
-          {header: 'test5', src: 'http://via.placeholder.com/200x200'},
-          {header: 'test6', src: 'http://via.placeholder.com/200x200'},
-          {header: 'test7', src: 'http://via.placeholder.com/200x200'},
+          {header: 'test5', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test6', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test7', src: 'http://via.placeholder.com/200x200', href: '#'},
         ]
       ];
 
       class ModPanel extends React.Component {
         render() {
           return React.createElement(ReactBootstrap.Panel, {header: `${this.props.header}`, bsStyle: 'primary', className: 'modPanel'},
-            React.createElement(ReactBootstrap.Image, {src: `${this.props.src}`, responsive: true}, null)
+            React.createElement(ReactBootstrap.Thumbnail, {href: `${this.props.href}`, src: `${this.props.src}`}, null)
           );
         }
       }
