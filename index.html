@@ -45,6 +45,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.31.5/react-bootstrap.js"></script>
     <script>
 
+      let modPanels = [
+        {header: 'test1', src: 'http://via.placeholder.com/200x200'},
+        {header: 'test2', src: 'http://via.placeholder.com/200x200'},
+        {header: 'test3', src: 'http://via.placeholder.com/200x200'},
+        {header: 'test4', src: 'http://via.placeholder.com/200x200'},
+      ];
+
       class ModPanel extends React.Component {
         render() {
           return React.createElement(ReactBootstrap.Panel, {header: `${this.props.header}`, bsStyle: 'primary', className: 'modPanel'},
@@ -57,12 +64,11 @@
 
       let grid = React.createElement(ReactBootstrap.Grid, null, 
         React.createElement(ReactBootstrap.Row, null,
-          React.createElement(ReactBootstrap.Col, {xs: 6, className: 'text-center'},
-            React.createElement(ModPanel, {header: 'test', src: 'http://via.placeholder.com/200x200'}, null)
-          ),
-          React.createElement(ReactBootstrap.Col, {xs: 6, className: 'text-center'},
-            React.createElement(ModPanel, {header: 'test', src: 'http://via.placeholder.com/200x200'}, null)
-          ),
+          modPanels.map((props, index, panels)=>{
+            return React.createElement(ReactBootstrap.Col, {xs: 12 / panels.length, className: 'text-center', key: props.header},
+              React.createElement(ModPanel, props, null)
+            );
+          })
         )
       );
 
