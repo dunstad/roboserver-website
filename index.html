@@ -61,7 +61,7 @@
         render() {
           return React.createElement(ReactBootstrap.OverlayTrigger, {
               placement: 'bottom',
-              overlay: React.createElement(ReactBootstrap.Tooltip, {id: `${this.props.header}`}, 'Lorem ipsum dolor sit amet!')
+              overlay: React.createElement(ReactBootstrap.Tooltip, {id: `${this.props.header}`}, 'Lorem ipsum dolor sit amet!'),
             },
             React.createElement(ReactBootstrap.Panel, {header: `${this.props.header}`, bsStyle: 'primary'},
               React.createElement(ReactBootstrap.Thumbnail, {href: `${this.props.href}`, src: `${this.props.src}`}, null)
