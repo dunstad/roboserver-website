@@ -101,12 +101,30 @@
           );
         }
       }
+
+      class TaskPanel extends React.Component {
+        render() {
+          return React.createElement(ReactBootstrap.Panel, {header: `${this.props.header}`, bsStyle: 'primary', className: 'modPanel'},
+            React.createElement(ModGrid, this.props, null)
+          );
+        }
+      }
+
+      class TaskPanelContainer extends React.Component {
+        render() {
+          return React.createElement(ReactBootstrap.Grid, null,
+          this.props.mod2DArray.map((modArray, index, mod2DArray)=>{
+              return React.createElement(TaskPanel, {mod2DArray: [modArray], key: `taskPanel${index}`}, null);
+            })
+          );
+        }
+      }
       
       let reactContainer = document.getElementById('reactContainer');
 
-      let grid = React.createElement(ModGrid, {mod2DArray: modPanels}, null);
+      let taskPanelContainer = React.createElement(TaskPanelContainer, {mod2DArray: modPanels}, null);
 
-      ReactDOM.render(grid, reactContainer, null);
+      ReactDOM.render(taskPanelContainer, reactContainer, null);
 
     </script>
 
