@@ -105,7 +105,7 @@
       class TaskPanel extends React.Component {
         render() {
           return React.createElement(ReactBootstrap.Panel, {header: `${this.props.header}`, bsStyle: 'primary', className: 'modPanel'},
-          React.createElement(ReactBootstrap.Modal.Body, null, `${this.props.body}`),
+            React.createElement(ReactBootstrap.Modal.Body, null, `${this.props.body}`),
             React.createElement(ModGrid, this.props, null)
           );
         }
@@ -114,7 +114,7 @@
       class TaskPanelContainer extends React.Component {
         render() {
           return React.createElement(ReactBootstrap.Grid, null,
-          this.props.taskPanelArray.map((taskPanel, index, mod2DArray)=>{
+            this.props.taskPanelArray.map((taskPanel, index, mod2DArray)=>{
               return React.createElement(TaskPanel, {mod2DArray: [taskPanel.modArray], key: `taskPanel${index}`, header: taskPanel.header, body: taskPanel.body}, null);
             })
           );
