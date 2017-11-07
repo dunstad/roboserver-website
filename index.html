@@ -14,24 +14,6 @@
   
       <style>
 
-        header {
-          padding: 154px 0 100px;
-        }
-
-        @media (min-width: 992px) {
-          header {
-            padding: 156px 0 100px;
-          }
-        }
-
-        section {
-          padding: 150px 0;
-        }
-
-        .modPanel {
-          display: inline-block;
-        }
-
         #canvas {
           position: absolute;
           top: 0px;
@@ -73,7 +55,7 @@
 
       class ModPanel extends React.Component {
         render() {
-          return React.createElement(ReactBootstrap.Panel, {header: `${this.props.header}`, bsStyle: 'primary', className: 'modPanel'},
+          return React.createElement(ReactBootstrap.Panel, {header: `${this.props.header}`, bsStyle: 'primary'},
             React.createElement(ReactBootstrap.Thumbnail, {href: `${this.props.href}`, src: `${this.props.src}`}, null)
           );
         }
@@ -92,21 +74,11 @@
         }
       }
 
-      class ModGrid extends React.Component {
-        render() {
-          return React.createElement(ReactBootstrap.Grid, null,
-            this.props.mod2DArray.map((modPanelRow, index)=>{
-              return React.createElement(ModRow, {modPanelRow: modPanelRow, key: `modRow${index}`}, null);
-            })
-          );
-        }
-      }
-
       class TaskPanel extends React.Component {
         render() {
           return React.createElement(ReactBootstrap.Panel, {header: `${this.props.header}`, bsStyle: 'primary', className: 'modPanel'},
             React.createElement(ReactBootstrap.Modal.Body, null, `${this.props.body}`),
-            React.createElement(ModGrid, this.props, null)
+            React.createElement(ModRow, {modPanelRow: this.props.modArray}, null)
           );
         }
       }
@@ -115,7 +87,12 @@
         render() {
           return React.createElement(ReactBootstrap.Grid, null,
             this.props.taskPanelArray.map((taskPanel, index, mod2DArray)=>{
-              return React.createElement(TaskPanel, {mod2DArray: [taskPanel.modArray], key: `taskPanel${index}`, header: taskPanel.header, body: taskPanel.body}, null);
+              return React.createElement(TaskPanel, {
+                modArray: taskPanel.modArray,
+                key: `taskPanel${index}`,
+                header: taskPanel.header,
+                body: taskPanel.body,
+              }, null);
             })
           );
         }
