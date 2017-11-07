@@ -58,17 +58,17 @@
       addMatrixEffect('canvas', 'white', '#eaeaea', .4)
 
       let modPanels = [
-        [
+        {header: 'test1', body: 'test', modArray: [
           {header: 'test1', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test2', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test3', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test4', src: 'http://via.placeholder.com/200x200', href: '#'},
-        ],
-        [
+        ]},
+        {header: 'test2', body: 'test', modArray: [
           {header: 'test5', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test6', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test7', src: 'http://via.placeholder.com/200x200', href: '#'},
-        ]
+        ]},
       ];
 
       class ModPanel extends React.Component {
@@ -105,7 +105,7 @@
       class TaskPanel extends React.Component {
         render() {
           return React.createElement(ReactBootstrap.Panel, {header: `${this.props.header}`, bsStyle: 'primary', className: 'modPanel'},
-          React.createElement(ReactBootstrap.Modal.Body, null, 'Lorem ipsum dolor sit amet.'),
+          React.createElement(ReactBootstrap.Modal.Body, null, `${this.props.body}`),
             React.createElement(ModGrid, this.props, null)
           );
         }
@@ -114,8 +114,8 @@
       class TaskPanelContainer extends React.Component {
         render() {
           return React.createElement(ReactBootstrap.Grid, null,
-          this.props.mod2DArray.map((modArray, index, mod2DArray)=>{
-              return React.createElement(TaskPanel, {mod2DArray: [modArray], key: `taskPanel${index}`, header: 'test'}, null);
+          this.props.taskPanelArray.map((taskPanel, index, mod2DArray)=>{
+              return React.createElement(TaskPanel, {mod2DArray: [taskPanel.modArray], key: `taskPanel${index}`, header: taskPanel.header, body: taskPanel.body}, null);
             })
           );
         }
@@ -123,7 +123,7 @@
       
       let reactContainer = document.getElementById('reactContainer');
 
-      let taskPanelContainer = React.createElement(TaskPanelContainer, {mod2DArray: modPanels}, null);
+      let taskPanelContainer = React.createElement(TaskPanelContainer, {taskPanelArray: modPanels}, null);
 
       ReactDOM.render(taskPanelContainer, reactContainer, null);
 
