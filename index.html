@@ -25,6 +25,12 @@
           padding-top: 20px;
         }
 
+        .tab-pane {
+          padding: 15px;
+          border: 1px solid #ddd;
+          border-top: 0px;
+        }
+
       </style>
 
   </head>
@@ -80,13 +86,8 @@
 
       class ModPanel extends React.Component {
         render() {
-          return React.createElement(ReactBootstrap.OverlayTrigger, {
-              placement: 'bottom',
-              overlay: React.createElement(ReactBootstrap.Tooltip, {id: `${this.props.header}`}, 'Lorem ipsum dolor sit amet!'),
-            },
-            React.createElement(ReactBootstrap.Panel, {header: `${this.props.header}`, bsStyle: 'primary'},
-              React.createElement(ReactBootstrap.Thumbnail, {href: `${this.props.href}`, src: `${this.props.src}`}, null)
-            )
+          return React.createElement(ReactBootstrap.Panel, {header: `${this.props.header}`, bsStyle: 'primary', className: 'text-center'},
+            React.createElement(ReactBootstrap.Thumbnail, {href: `${this.props.href}`, src: `${this.props.src}`}, null)
           );
         }
       }
@@ -124,7 +125,7 @@
 
       class TabGroup extends React.Component {
         render() {
-          return React.createElement(ReactBootstrap.Tabs, {id: `${this.props.id}TabGroup`},
+          return React.createElement(ReactBootstrap.Tabs, {id: `${this.props.id}TabGroup`, justified: true},
             this.props.modArray.map((props, index, panels)=>{
               return React.createElement(ReactBootstrap.Tab, {title: props.header, eventKey: index, key: index},
                 React.createElement(TabContent, props, null)
@@ -139,7 +140,6 @@
           return React.createElement(ReactBootstrap.Panel, {
               header: `${this.props.header}`,
               bsStyle: 'primary',
-              className: 'modPanel',
             },
             React.createElement(ReactBootstrap.Modal.Body, null, `${this.props.body}`),
             React.createElement(TabGroup, {modArray: this.props.modArray, id: this.props.header}, null)
