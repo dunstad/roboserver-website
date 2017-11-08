@@ -1,8 +1,14 @@
 function addMatrixEffect(canvasId, backgroundColor, textColor, spawnRate) {
 	
 	let canvas = document.getElementById(canvasId);
-	canvas.width  = document.documentElement.clientWidth;
-	canvas.height = document.documentElement.clientHeight;
+	
+	let updateCanvasSize = ()=>{
+		canvas.width  = document.documentElement.clientWidth;
+		canvas.height = document.documentElement.clientHeight;
+	};
+	window.addEventListener('resize', updateCanvasSize);
+	setTimeout(updateCanvasSize, 1000); // this runs after the images load
+
 	canvas.style.backgroundColor = backgroundColor;
 	
 	let world = [];
