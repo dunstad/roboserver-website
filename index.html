@@ -44,16 +44,37 @@
       addMatrixEffect('canvas', 'white', '#eaeaea', .4)
 
       let modPanels = [
-        {header: 'test1', body: 'test', modArray: [
+        {header: 'Item Transportation', body: 'test', modArray: [
           {header: 'test1', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test2', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test3', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test4', src: 'http://via.placeholder.com/200x200', href: '#'},
         ]},
-        {header: 'test2', body: 'test', modArray: [
+        {header: 'Resource Acquisition', body: 'test', modArray: [
           {header: 'test5', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test6', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test7', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test8', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test9', src: 'http://via.placeholder.com/200x200', href: '#'},
+        ]},
+        {header: 'Crafting', body: 'test', modArray: [
+          {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
+        ]},
+        {header: 'Building', body: 'test', modArray: [
+          {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
+        ]},
+        {header: 'General Automation', body: 'test', modArray: [
+          {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
+          {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
         ]},
       ];
 
@@ -75,8 +96,38 @@
           return React.createElement(ReactBootstrap.Row, null,
             this.props.modPanelRow.map((props, index, panels)=>{
               props.header = `Level ${index}: ${props.header}`;
-              return React.createElement(ReactBootstrap.Col, {xs: 12 / panels.length, className: 'text-center', key: `modCol${index}`},
-                React.createElement(ModPanel, props, null)
+              return React.createElement(ReactBootstrap.Col, {
+                  xsOffset: index == 0 ? (12 % panels.length) / 2 : 0,
+                  xs: Math.floor(12 / panels.length),
+                  className: 'text-center',
+                  key: `modCol${index}`,
+                },
+                React.createElement(ModPanel, props, null),
+              );
+            })
+          );
+        }
+      }
+
+      class TabContent extends React.Component {
+        render() {
+          return React.createElement(ReactBootstrap.Row, null,
+            React.createElement(ReactBootstrap.Col, {xs: 6},
+              React.createElement(ModPanel, this.props, null),
+            ),
+            React.createElement(ReactBootstrap.Col, {xs: 6},
+              React.createElement(ReactBootstrap.Modal.Body, null, 'test'),
+            ),
+          );
+        }
+      }
+
+      class TabGroup extends React.Component {
+        render() {
+          return React.createElement(ReactBootstrap.Tabs, {id: `${this.props.id}TabGroup`},
+            this.props.modArray.map((props, index, panels)=>{
+              return React.createElement(ReactBootstrap.Tab, {title: props.header, eventKey: index, key: index},
+                React.createElement(TabContent, props, null)
               );
             })
           );
@@ -85,9 +136,13 @@
 
       class TaskPanel extends React.Component {
         render() {
-          return React.createElement(ReactBootstrap.Panel, {header: `${this.props.header}`, bsStyle: 'primary', className: 'modPanel'},
+          return React.createElement(ReactBootstrap.Panel, {
+              header: `${this.props.header}`,
+              bsStyle: 'primary',
+              className: 'modPanel',
+            },
             React.createElement(ReactBootstrap.Modal.Body, null, `${this.props.body}`),
-            React.createElement(ModRow, {modPanelRow: this.props.modArray}, null)
+            React.createElement(TabGroup, {modArray: this.props.modArray, id: this.props.header}, null)
           );
         }
       }
