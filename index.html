@@ -50,33 +50,33 @@
       addMatrixEffect('canvas', 'white', '#eaeaea', .4)
 
       let modPanels = [
-        {header: 'Item Transportation', body: 'test', modArray: [
+        {header: 'Item Transportation', body: "Everybody wants items to be in places they aren't, and who has time to carry them? Successfully automate item transportation and never have to wonder where you keep your diamonds again.", modArray: [
           {header: 'test1', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test2', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test3', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test4', src: 'http://via.placeholder.com/200x200', href: '#'},
         ]},
-        {header: 'Resource Acquisition', body: 'test', modArray: [
+        {header: 'Resource Acquisition', body: "Ever try and calculate how many hours you've spent staring at cave walls with left mouse held down? You've got better places to be, so automate resource gathering and don't let that number grow any larger.", modArray: [
           {header: 'test5', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test6', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test7', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test8', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test9', src: 'http://via.placeholder.com/200x200', href: '#'},
         ]},
-        {header: 'Crafting', body: 'test', modArray: [
+        {header: 'Crafting', body: "Microcrafting getting you down? Give your player's tired, stumpy hands a break by having machines craft the things you need instead.", modArray: [
           {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
         ]},
-        {header: 'Building', body: 'test', modArray: [
+        {header: 'Building', body: "We all like to have a nice looking base, but is it really worth falling off the roof to build? There's no health insurance in Minecraft, so it's best to get this task off your plate as soon as possible.", modArray: [
           {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
         ]},
-        {header: 'General Automation', body: 'test', modArray: [
+        {header: 'General Automation', body: "Ever find yourself putting off that next big expansion to your base? Big projects can require making an exhausting number of decisions. Lighten your cognitive load with a healthy dose of general automation.", modArray: [
           {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
           {header: 'test', src: 'http://via.placeholder.com/200x200', href: '#'},
@@ -127,7 +127,7 @@
         render() {
           return React.createElement(ReactBootstrap.Tabs, {id: `${this.props.id}TabGroup`, justified: true},
             this.props.modArray.map((props, index, panels)=>{
-              return React.createElement(ReactBootstrap.Tab, {title: props.header, eventKey: index, key: index},
+              return React.createElement(ReactBootstrap.Tab, {title: `Level ${index}`, eventKey: index, key: index},
                 React.createElement(TabContent, props, null)
               );
             })
