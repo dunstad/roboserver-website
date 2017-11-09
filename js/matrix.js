@@ -7,7 +7,7 @@ function addMatrixEffect(canvasId, backgroundColor, textColor, spawnRate) {
 		canvas.height = document.documentElement.clientHeight;
 	};
 	window.addEventListener('resize', updateCanvasSize);
-	setTimeout(updateCanvasSize, 1000); // this runs after the images load
+	document.body.onload = updateCanvasSize;
 
 	canvas.style.backgroundColor = backgroundColor;
 	
