@@ -11,27 +11,7 @@
   
       <!-- Bootstrap core CSS -->
       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  
-      <style>
-
-        #canvas {
-          position: absolute;
-          top: 0px;
-          left: 0px;
-          z-index: -1;
-        }
-
-        body {
-          padding-top: 20px;
-        }
-
-        .tab-pane {
-          padding: 15px;
-          border: 1px solid #ddd;
-          border-top: 0px;
-        }
-
-      </style>
+      <link href="css/css.css" rel="stylesheet">
 
   </head>
 
@@ -80,7 +60,10 @@
 
       class ModPanel extends React.Component {
         render() {
-          return React.createElement(ReactBootstrap.Panel, {header: `${this.props.header}`, bsStyle: 'primary', className: 'text-center'},
+          return React.createElement(ReactBootstrap.Panel, {
+              header: `${this.props.header}`,
+              bsStyle: 'primary',
+              className: 'text-center'},
             React.createElement(ReactBootstrap.Thumbnail, {href: `${this.props.href}`, src: `${this.props.src}`}, null)
           );
         }

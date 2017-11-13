@@ -1,0 +1,16 @@
+#canvas {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+}
+
+body {
+  padding-top: 20px;
+}
+
+.tab-pane {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-top: 0px;
+}
