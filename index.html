@@ -97,7 +97,7 @@
               React.createElement(ModPanel, this.props, null),
             ),
             React.createElement(ReactBootstrap.Col, {xs: 6},
-              React.createElement(ReactBootstrap.Modal.Body, null, this.props.body),
+              React.createElement(ReactBootstrap.Modal.Body, {dangerouslySetInnerHTML: {__html: this.props.body}}, null),
             ),
           );
         }
